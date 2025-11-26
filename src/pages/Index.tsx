@@ -6,11 +6,6 @@ import { Scale } from "lucide-react";
 const Index = () => {
   const rightsItems = [
     {
-      title: "Women Protection Laws",
-      description: "Comprehensive laws protecting women from domestic violence, harassment, and discrimination",
-      link: "/women-protection-laws"
-    },
-    {
       title: "Legal Rights",
       description: "Fundamental rights of every citizen including freedom, equality, and constitutional remedies",
       link: "/legal-rights"
@@ -19,6 +14,11 @@ const Index = () => {
       title: "Constitutional Rights",
       description: "The Golden Triangle: Articles 14, 19 & 21 - Core fundamental rights of Indian Constitution",
       link: "/constitutional-rights"
+    },
+    {
+      title: "Women Protection Laws",
+      description: "Comprehensive laws protecting women from domestic violence, harassment, and discrimination",
+      link: "/women-protection-laws"
     },
     {
       title: "Consumer Rights",
