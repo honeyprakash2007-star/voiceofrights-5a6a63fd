@@ -35,23 +35,23 @@ const Index = () => {
   const selfDefenseItems = [
     {
       title: "Basic Self Defense Techniques",
-      description: "Essential moves for personal safety",
-      link: "#"
+      description: "Essential moves for personal safety from expert instructors",
+      link: "/self-defense-videos"
     },
     {
       title: "Situational Awareness",
       description: "Stay alert and avoid dangerous situations",
-      link: "#"
+      link: "/self-defense-videos"
     },
     {
       title: "Self Defense Tools",
-      description: "Legal personal safety equipment",
-      link: "#"
+      description: "Legal personal safety equipment and how to use them",
+      link: "/self-defense-videos"
     },
     {
       title: "Verbal De-escalation",
-      description: "Techniques to defuse confrontations",
-      link: "#"
+      description: "Techniques to defuse confrontations before they escalate",
+      link: "/self-defense-videos"
     }
   ];
 
