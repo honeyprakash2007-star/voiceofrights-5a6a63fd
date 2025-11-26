@@ -10,10 +10,10 @@ const SelfDefenseVideos = () => {
       duration: "10:15"
     },
     {
-      title: "Situational Awareness Tips",
-      description: "How to stay alert and avoid dangerous situations",
-      videoId: "2REhb6ywcpM",
-      duration: "8:42"
+      title: "Women's Self Defense - Street Safety Tips",
+      description: "Essential awareness and prevention strategies for staying safe",
+      videoId: "0HvMeZlYTsc",
+      duration: "9:25"
     },
     {
       title: "Self Defense Against Common Attacks",
@@ -22,10 +22,10 @@ const SelfDefenseVideos = () => {
       duration: "12:30"
     },
     {
-      title: "Verbal De-escalation Techniques",
-      description: "Learn to defuse confrontations before they become physical",
-      videoId: "rNDw3JMxgHs",
-      duration: "6:20"
+      title: "Escape Techniques for Women",
+      description: "How to break free from common holds and grabs",
+      videoId: "T2Kf7vA5S4s",
+      duration: "11:48"
     }
   ];
 
