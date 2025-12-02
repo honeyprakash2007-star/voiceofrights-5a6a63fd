@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import EmergencyHelplines from "@/components/EmergencyHelplines";
 import { Scale } from "lucide-react";
+import heroBackground from "@/assets/hero-background.png";
 import legalRightsBg from "@/assets/legal-rights-bg.png";
 import constitutionalRightsBg from "@/assets/constitutional-rights-bg.png";
 import womenProtectionBg from "@/assets/women-protection-bg.png";
@@ -74,25 +75,35 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <main>
-        {/* Hero Section */}
-        <section className="container px-4 py-16 md:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="flex items-center justify-center mb-6">
-              <Scale className="h-20 w-20 text-primary animate-pulse" />
+        {/* Hero Section with Background */}
+        <section className="relative overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-20"
+            style={{ backgroundImage: `url(${heroBackground})` }}
+          />
+          <div className="absolute inset-0 bg-gradient-hero" />
+          
+          <div className="relative container px-4 py-24 md:py-32 md:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="flex items-center justify-center mb-8">
+                <div className="p-4 bg-accent/10 rounded-full backdrop-blur-sm">
+                  <Scale className="h-16 w-16 md:h-20 md:w-20 text-accent drop-shadow-glow" />
+                </div>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg">
+                Know Your Rights
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 mb-4 font-medium">
+                Empowering citizens with knowledge of their legal rights and protections
+              </p>
+              <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+                Understanding your rights is the first step towards justice. Explore comprehensive information about legal protections, constitutional guarantees, and safety procedures available to every citizen.
+              </p>
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-              Know Your Rights
-            </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-4">
-              Empowering citizens with knowledge of their legal rights and protections
-            </p>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Understanding your rights is the first step towards justice. Explore comprehensive information about legal protections, constitutional guarantees, and safety procedures available to every citizen.
-            </p>
           </div>
         </section>
 
