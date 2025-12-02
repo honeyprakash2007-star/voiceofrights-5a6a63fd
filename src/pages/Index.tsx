@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import EmergencyHelplines from "@/components/EmergencyHelplines";
-import { Scale } from "lucide-react";
+
 import heroBackground from "@/assets/hero-background.png";
 import legalRightsBg from "@/assets/legal-rights-bg.png";
 import constitutionalRightsBg from "@/assets/constitutional-rights-bg.png";
@@ -82,18 +82,13 @@ const Index = () => {
         {/* Hero Section with Background */}
         <section className="relative overflow-hidden">
           <div 
-            className="absolute inset-0 bg-cover bg-center opacity-20"
+            className="absolute inset-0 bg-cover bg-center opacity-40"
             style={{ backgroundImage: `url(${heroBackground})` }}
           />
           <div className="absolute inset-0 bg-gradient-hero" />
           
           <div className="relative container px-4 py-24 md:py-32 md:px-8">
-            <div className="text-center max-w-4xl mx-auto">
-              <div className="flex items-center justify-center mb-8">
-                <div className="p-4 bg-accent/10 rounded-full backdrop-blur-sm">
-                  <Scale className="h-16 w-16 md:h-20 md:w-20 text-accent drop-shadow-glow" />
-                </div>
-              </div>
+          <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg">
                 Know Your Rights
               </h1>

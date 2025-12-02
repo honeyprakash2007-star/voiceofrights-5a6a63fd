@@ -27,7 +27,7 @@ const HorizontalScroll = ({ title, items }: HorizontalScrollProps) => {
               <Card className="h-full transition-all duration-300 hover:shadow-xl hover:scale-105 border-primary/20 hover:border-primary bg-gradient-to-br from-card to-card/80 overflow-hidden relative">
                 {item.bgImage && (
                   <div 
-                    className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-300"
+                    className="absolute inset-0 opacity-30 group-hover:opacity-40 transition-opacity duration-300"
                     style={{
                       backgroundImage: `url(${item.bgImage})`,
                       backgroundSize: 'cover',
