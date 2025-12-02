@@ -2,33 +2,47 @@ import Header from "@/components/Header";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import EmergencyHelplines from "@/components/EmergencyHelplines";
 import { Scale } from "lucide-react";
+import legalRightsBg from "@/assets/legal-rights-bg.png";
+import constitutionalRightsBg from "@/assets/constitutional-rights-bg.png";
+import womenProtectionBg from "@/assets/women-protection-bg.png";
+import consumerRightsBg from "@/assets/consumer-rights-bg.png";
+import cyberSafetyBg from "@/assets/cyber-safety-bg.png";
+import selfDefenseBg from "@/assets/self-defense-bg.png";
+import situationalAwarenessBg from "@/assets/situational-awareness-bg.png";
+import defenseToolsBg from "@/assets/defense-tools-bg.png";
+import verbalDeescalationBg from "@/assets/verbal-deescalation-bg.png";
 
 const Index = () => {
   const rightsItems = [
     {
       title: "Legal Rights",
       description: "Fundamental rights of every citizen including freedom, equality, and constitutional remedies",
-      link: "/legal-rights"
+      link: "/legal-rights",
+      bgImage: legalRightsBg
     },
     {
       title: "Constitutional Rights",
       description: "The Golden Triangle: Articles 14, 19 & 21 - Core fundamental rights of Indian Constitution",
-      link: "/constitutional-rights"
+      link: "/constitutional-rights",
+      bgImage: constitutionalRightsBg
     },
     {
       title: "Women Protection Laws",
       description: "Comprehensive laws protecting women from domestic violence, harassment, and discrimination",
-      link: "/women-protection-laws"
+      link: "/women-protection-laws",
+      bgImage: womenProtectionBg
     },
     {
       title: "Consumer Rights",
       description: "Six fundamental rights protecting consumers and procedures for filing complaints",
-      link: "/consumer-rights"
+      link: "/consumer-rights",
+      bgImage: consumerRightsBg
     },
     {
       title: "Cyber Safety Procedures",
       description: "Essential guidelines and best practices for staying safe in the digital world",
-      link: "/cyber-safety"
+      link: "/cyber-safety",
+      bgImage: cyberSafetyBg
     }
   ];
 
@@ -36,22 +50,26 @@ const Index = () => {
     {
       title: "Basic Self Defense Techniques",
       description: "Essential moves for personal safety from expert instructors",
-      link: "/self-defense-videos"
+      link: "/self-defense-videos",
+      bgImage: selfDefenseBg
     },
     {
       title: "Situational Awareness",
       description: "Stay alert and avoid dangerous situations",
-      link: "/self-defense-videos"
+      link: "/self-defense-videos",
+      bgImage: situationalAwarenessBg
     },
     {
       title: "Self Defense Tools",
       description: "Legal personal safety equipment and how to use them",
-      link: "/self-defense-videos"
+      link: "/self-defense-videos",
+      bgImage: defenseToolsBg
     },
     {
       title: "Verbal De-escalation",
       description: "Techniques to defuse confrontations before they escalate",
-      link: "/self-defense-videos"
+      link: "/self-defense-videos",
+      bgImage: verbalDeescalationBg
     }
   ];
 
