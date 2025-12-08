@@ -1,291 +1,358 @@
 import Header from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, Shield, Lock, Eye, AlertTriangle, Smartphone, Mail } from "lucide-react";
+import { ArrowLeft, Shield, Lock, Eye, AlertTriangle, Smartphone, Mail, ShoppingCart, Users, CheckCircle, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import cyberSafetyBg from "@/assets/cyber-safety-bg.png";
 
 const CyberSafety = () => {
+  const threats = [
+    { name: "Malware", desc: "Malicious software including viruses, trojans, ransomware", solution: "Install reputable antivirus software" },
+    { name: "Phishing", desc: "Fraudulent attempts to obtain sensitive information", solution: "Verify sources before sharing information" },
+    { name: "Identity Theft", desc: "Unauthorized use of personal information", solution: "Monitor financial statements regularly" },
+    { name: "Cyberbullying", desc: "Online harassment or intimidation", solution: "Document, block, and report to authorities" },
+    { name: "Online Scams", desc: "Fraudulent schemes to extract money", solution: "Be skeptical of unsolicited offers" },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
+    <div className="min-h-screen bg-background">
       <Header />
-      <main className="container px-4 py-8 md:px-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-colors mb-6">
-          <ArrowLeft className="h-4 w-4" />
-          Back to Home
-        </Link>
+      
+      {/* Hero Section */}
+      <section className="relative overflow-hidden py-16 md:py-24">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: `url(${cyberSafetyBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-background/80 to-background" />
         
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+        <div className="relative container px-4 md:px-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors mb-8 group">
+            <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+          
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-full mb-6 backdrop-blur-sm">
+              <Shield className="h-12 w-12 text-primary" />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary via-primary-light to-accent bg-clip-text text-transparent">
               Cyber Safety Procedures
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Essential guidelines for staying safe online
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Essential guidelines for staying safe online in the digital world
             </p>
           </div>
+        </div>
+      </section>
 
-          <Card className="border-primary/20 bg-gradient-card">
-            <CardHeader>
-              <CardTitle className="text-2xl text-primary-foreground flex items-center gap-2">
-                <Shield className="h-6 w-6" />
-                Top 15 Internet Safety Rules
-              </CardTitle>
-              <CardDescription className="text-primary-foreground/80">Essential practices for online security</CardDescription>
+      <main className="container px-4 pb-16 md:px-8">
+        <div className="max-w-5xl mx-auto space-y-8">
+          
+          {/* Overview Card */}
+          <Card className="border-accent/30 bg-gradient-to-br from-accent/10 via-primary/5 to-transparent overflow-hidden">
+            <CardHeader className="pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-accent/20 rounded-xl">
+                  <Shield className="h-6 w-6 text-accent" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground">
+                    Top 15 Internet Safety Rules
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Essential practices for online security</CardDescription>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed text-primary-foreground">
+            <CardContent className="text-base leading-relaxed">
               <p>
                 In today's digital world, protecting yourself online is crucial. Follow these fundamental rules to maintain your digital safety and privacy.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Lock className="h-6 w-6" />
-                Password Security
-              </CardTitle>
-              <CardDescription>Creating and managing strong passwords</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Password Best Practices:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>Use Strong Passwords:</strong> Minimum 12 characters with uppercase, lowercase, numbers, and special characters</li>
-                  <li><strong>Unique Passwords:</strong> Never reuse passwords across different accounts</li>
-                  <li><strong>Password Manager:</strong> Use reputable password managers to store credentials securely</li>
-                  <li><strong>Two-Factor Authentication (2FA):</strong> Enable 2FA on all accounts that support it</li>
-                  <li><strong>Regular Updates:</strong> Change passwords every 3-6 months, especially for critical accounts</li>
-                  <li><strong>Avoid Personal Information:</strong> Don't use birthdays, names, or common words</li>
-                  <li><strong>Passphrases:</strong> Consider using long, memorable passphrases like "Coffee@Morning#2025!"</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Mail className="h-6 w-6" />
-                Email and Phishing Protection
-              </CardTitle>
-              <CardDescription>Identifying and avoiding email scams</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Protect Yourself from Phishing:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>Verify Sender:</strong> Check email addresses carefully - scammers often use similar-looking domains</li>
-                  <li><strong>Suspicious Links:</strong> Hover over links to see actual URL before clicking</li>
-                  <li><strong>Urgent Messages:</strong> Be skeptical of emails creating urgency (account suspension, security alerts)</li>
-                  <li><strong>Unexpected Attachments:</strong> Don't open attachments from unknown senders</li>
-                  <li><strong>Generic Greetings:</strong> Legitimate companies use your name, not "Dear Customer"</li>
-                  <li><strong>Spelling Errors:</strong> Professional organizations don't send emails with poor grammar</li>
-                  <li><strong>Too Good to Be True:</strong> Lottery wins, inheritance from unknown relatives are scams</li>
-                  <li><strong>Direct Contact:</strong> When in doubt, contact the organization directly through official channels</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Smartphone className="h-6 w-6" />
-                Mobile Device Security
-              </CardTitle>
-              <CardDescription>Protecting your smartphones and tablets</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Mobile Security Guidelines:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>Lock Screen:</strong> Always use PIN, password, pattern, or biometric lock</li>
-                  <li><strong>Official App Stores:</strong> Download apps only from Google Play Store or Apple App Store</li>
-                  <li><strong>App Permissions:</strong> Review and limit app permissions - deny unnecessary access</li>
-                  <li><strong>Regular Updates:</strong> Keep OS and apps updated with latest security patches</li>
-                  <li><strong>Public Wi-Fi:</strong> Avoid sensitive transactions on public networks; use VPN if necessary</li>
-                  <li><strong>Remote Wipe:</strong> Enable "Find My Device" feature for remote lock/wipe capability</li>
-                  <li><strong>Bluetooth:</strong> Turn off Bluetooth when not in use</li>
-                  <li><strong>Backup Data:</strong> Regularly backup important data to cloud or computer</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <Eye className="h-6 w-6" />
-                Social Media Safety
-              </CardTitle>
-              <CardDescription>Protecting your privacy on social platforms</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Social Media Best Practices:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>Privacy Settings:</strong> Review and adjust privacy settings regularly</li>
-                  <li><strong>Personal Information:</strong> Don't share phone numbers, addresses, or financial details</li>
-                  <li><strong>Location Services:</strong> Disable location tagging or use it selectively</li>
-                  <li><strong>Friend Requests:</strong> Only accept requests from people you know personally</li>
-                  <li><strong>Think Before Posting:</strong> Information shared online is permanent</li>
-                  <li><strong>Stranger Danger:</strong> Be cautious about interacting with unknown profiles</li>
-                  <li><strong>Report Abuse:</strong> Report and block suspicious accounts or cyberbullying</li>
-                  <li><strong>Digital Footprint:</strong> Remember that posts can affect future opportunities (jobs, education)</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl flex items-center gap-2">
-                <AlertTriangle className="h-6 w-6" />
-                Common Cyber Threats
-              </CardTitle>
-              <CardDescription>Recognizing and avoiding digital dangers</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Types of Cyber Threats:</h3>
-                <div className="space-y-4">
-                  <div className="border-l-4 border-destructive pl-4">
-                    <h4 className="font-bold mb-1">Malware</h4>
-                    <p>Malicious software including viruses, trojans, ransomware. Install reputable antivirus software and keep it updated.</p>
-                  </div>
-                  <div className="border-l-4 border-destructive pl-4">
-                    <h4 className="font-bold mb-1">Phishing</h4>
-                    <p>Fraudulent attempts to obtain sensitive information by disguising as trustworthy entity. Verify sources before sharing information.</p>
-                  </div>
-                  <div className="border-l-4 border-destructive pl-4">
-                    <h4 className="font-bold mb-1">Identity Theft</h4>
-                    <p>Unauthorized use of personal information. Monitor financial statements and credit reports regularly.</p>
-                  </div>
-                  <div className="border-l-4 border-destructive pl-4">
-                    <h4 className="font-bold mb-1">Cyberbullying</h4>
-                    <p>Online harassment or intimidation. Document evidence, block perpetrators, and report to authorities.</p>
-                  </div>
-                  <div className="border-l-4 border-destructive pl-4">
-                    <h4 className="font-bold mb-1">Online Scams</h4>
-                    <p>Fraudulent schemes to extract money or information. Be skeptical of unsolicited offers and requests.</p>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Online Shopping Safety</CardTitle>
-              <CardDescription>Secure practices for e-commerce</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Safe Online Shopping:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>HTTPS:</strong> Ensure website uses HTTPS (lock icon in address bar)</li>
-                  <li><strong>Reputable Websites:</strong> Shop from well-known, trusted e-commerce platforms</li>
-                  <li><strong>Secure Payment:</strong> Use credit cards or secure payment gateways, avoid debit cards</li>
-                  <li><strong>Save Records:</strong> Keep screenshots of orders, confirmation emails</li>
-                  <li><strong>Public Computers:</strong> Never shop or access banking on public/shared computers</li>
-                  <li><strong>Too Cheap Offers:</strong> Extremely low prices often indicate counterfeit or scam</li>
-                  <li><strong>Check Reviews:</strong> Read customer reviews and seller ratings</li>
-                  <li><strong>Virtual Cards:</strong> Consider using virtual credit cards for online purchases</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Children's Online Safety</CardTitle>
-              <CardDescription>Protecting young internet users</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Parental Guidelines:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>Open Communication:</strong> Discuss internet safety and risks with children</li>
-                  <li><strong>Supervision:</strong> Monitor children's online activities and screen time</li>
-                  <li><strong>Parental Controls:</strong> Use age-appropriate content filters and restrictions</li>
-                  <li><strong>Privacy Education:</strong> Teach not to share personal information online</li>
-                  <li><strong>Stranger Danger:</strong> Explain risks of interacting with unknown people online</li>
-                  <li><strong>Report Mechanism:</strong> Ensure children know how to report inappropriate content</li>
-                  <li><strong>Digital Citizenship:</strong> Teach responsible and ethical online behavior</li>
-                  <li><strong>Lead by Example:</strong> Practice safe internet habits yourself</li>
-                </ul>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20 bg-accent/10">
-            <CardHeader>
-              <CardTitle className="text-2xl">Cyber Crime Reporting in India</CardTitle>
-              <CardDescription>How and where to report cyber crimes</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div className="bg-background p-4 rounded-lg space-y-3">
-                <div>
-                  <h3 className="font-bold text-lg mb-2">National Cyber Crime Reporting Portal:</h3>
-                  <p className="text-xl font-bold text-primary">www.cybercrime.gov.in</p>
-                  <p className="text-sm text-muted-foreground">24x7 online portal for reporting cyber crimes</p>
+          {/* Password Security */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Lock className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2">Cyber Crime Helpline:</h3>
-                  <p className="text-xl font-bold text-primary">1930</p>
-                  <p className="text-sm text-muted-foreground">National helpline for cyber crime reporting</p>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Password Security
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Creating and managing strong passwords</CardDescription>
                 </div>
               </div>
-              <div>
-                <h3 className="font-bold text-lg mb-2">Types of Complaints You Can File:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Online financial fraud</li>
-                  <li>Social media related crimes</li>
-                  <li>Cyber bullying and stalking</li>
-                  <li>Child pornography and child sexual abuse material</li>
-                  <li>Ransomware attacks</li>
-                  <li>Hacking and data breach</li>
-                  <li>Online job fraud</li>
-                  <li>Cryptocurrency fraud</li>
-                </ul>
+            </CardHeader>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  { title: "Strong Passwords", desc: "Minimum 12 characters with mixed case, numbers, symbols" },
+                  { title: "Unique Passwords", desc: "Never reuse passwords across accounts" },
+                  { title: "Password Manager", desc: "Use reputable password managers" },
+                  { title: "Two-Factor Auth", desc: "Enable 2FA on all accounts" },
+                  { title: "Regular Updates", desc: "Change passwords every 3-6 months" },
+                  { title: "No Personal Info", desc: "Avoid birthdays, names, common words" },
+                ].map((item, idx) => (
+                  <div key={idx} className="p-3 bg-card rounded-lg border border-border hover:border-primary/50 transition-colors flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-bold text-foreground text-sm">{item.title}</h4>
+                      <p className="text-xs text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Digital Hygiene Checklist</CardTitle>
-              <CardDescription>Regular maintenance for cyber safety</CardDescription>
+          {/* Email & Phishing */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Mail className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Email and Phishing Protection
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Identifying and avoiding email scams</CardDescription>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Weekly:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Check for software and app updates</li>
-                  <li>Review recent account activity</li>
-                  <li>Clear browser cache and cookies</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg mb-2">Monthly:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Review privacy settings on social media</li>
-                  <li>Check credit card and bank statements</li>
-                  <li>Update important passwords</li>
-                  <li>Backup important data</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg mb-2">Quarterly:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Review and revoke unused app permissions</li>
-                  <li>Delete unused accounts and apps</li>
-                  <li>Check credit report for suspicious activity</li>
-                  <li>Update emergency contacts and recovery options</li>
-                </ul>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="space-y-3">
+                {[
+                  { title: "Verify Sender", desc: "Check email addresses carefully - scammers use similar domains" },
+                  { title: "Suspicious Links", desc: "Hover over links to see actual URL before clicking" },
+                  { title: "Urgent Messages", desc: "Be skeptical of emails creating urgency" },
+                  { title: "Unexpected Attachments", desc: "Don't open attachments from unknown senders" },
+                ].map((item, idx) => (
+                  <div key={idx} className="p-4 bg-primary/5 rounded-xl border-l-4 border-primary">
+                    <h4 className="font-bold text-primary">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
+
+          {/* Mobile Security */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Smartphone className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Mobile Device Security
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Protecting your smartphones and tablets</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  "Always use PIN, password, or biometric lock",
+                  "Download apps only from official stores",
+                  "Review and limit app permissions",
+                  "Keep OS and apps updated",
+                  "Avoid sensitive transactions on public Wi-Fi",
+                  "Enable 'Find My Device' feature",
+                  "Turn off Bluetooth when not in use",
+                  "Regularly backup important data",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 p-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Social Media */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Eye className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Social Media Safety
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Protecting your privacy on social platforms</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  "Review and adjust privacy settings regularly",
+                  "Don't share phone numbers or addresses",
+                  "Disable location tagging",
+                  "Only accept requests from people you know",
+                  "Think before posting - it's permanent",
+                  "Report and block suspicious accounts",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 p-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Common Threats */}
+          <Card className="border-destructive/20 hover:border-destructive/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-destructive/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-destructive/10 rounded-xl group-hover:bg-destructive/20 transition-colors">
+                  <AlertTriangle className="h-6 w-6 text-destructive" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-destructive transition-colors">
+                    Common Cyber Threats
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Recognizing and avoiding digital dangers</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="space-y-3">
+                {threats.map((threat, idx) => (
+                  <div key={idx} className="p-4 bg-card rounded-xl border border-border hover:border-destructive/50 transition-colors">
+                    <h4 className="font-bold text-destructive">{threat.name}</h4>
+                    <p className="text-sm text-muted-foreground mt-1">{threat.desc}</p>
+                    <p className="text-sm text-primary mt-2"><strong>Solution:</strong> {threat.solution}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Online Shopping */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <ShoppingCart className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Online Shopping Safety
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Secure practices for e-commerce</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  "Ensure website uses HTTPS (lock icon)",
+                  "Shop from trusted e-commerce platforms",
+                  "Use credit cards or secure payment gateways",
+                  "Keep screenshots of orders and confirmations",
+                  "Never shop on public/shared computers",
+                  "Be wary of extremely low prices",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 p-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Children's Safety */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Users className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Children's Online Safety
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Protecting young internet users</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  "Discuss internet safety and risks openly",
+                  "Monitor children's online activities",
+                  "Use age-appropriate content filters",
+                  "Teach not to share personal information",
+                  "Explain risks of interacting with strangers",
+                  "Lead by example with safe habits",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 p-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Cyber Crime Reporting */}
+          <Card className="border-accent/30 bg-gradient-to-br from-primary/10 via-accent/10 to-transparent overflow-hidden">
+            <CardHeader className="pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-accent/20 rounded-xl">
+                  <Phone className="h-6 w-6 text-accent" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground">
+                    Cyber Crime Reporting in India
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">How and where to report cyber crimes</CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="p-6 bg-card rounded-xl border border-border text-center">
+                  <p className="text-sm text-muted-foreground mb-2">National Cyber Crime Portal</p>
+                  <p className="text-xl font-bold text-primary">cybercrime.gov.in</p>
+                  <p className="text-xs text-muted-foreground mt-1">24x7 online reporting</p>
+                </div>
+                <div className="p-6 bg-card rounded-xl border border-border text-center">
+                  <p className="text-sm text-muted-foreground mb-2">Cyber Crime Helpline</p>
+                  <p className="text-4xl font-bold text-primary">1930</p>
+                  <p className="text-xs text-muted-foreground mt-1">National helpline</p>
+                </div>
+              </div>
+              <h3 className="font-bold text-lg mb-3 text-accent">Types of Complaints You Can File:</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                {[
+                  "Financial fraud",
+                  "Social media crimes",
+                  "Cyber bullying",
+                  "Ransomware",
+                  "Hacking",
+                  "Job fraud",
+                  "Crypto fraud",
+                  "Data breach",
+                ].map((item, idx) => (
+                  <div key={idx} className="p-2 bg-card rounded-lg border border-border text-center text-sm">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
         </div>
       </main>
     </div>
