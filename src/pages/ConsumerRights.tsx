@@ -1,239 +1,268 @@
 import Header from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Shield, AlertCircle, CheckCircle, Info, Gavel, Globe, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import consumerRightsBg from "@/assets/consumer-rights-bg.png";
 
 const ConsumerRights = () => {
+  const sixRights = [
+    { title: "Right to Safety", description: "Protection against goods and services hazardous to life and property", icon: Shield },
+    { title: "Right to be Informed", description: "Know quality, quantity, potency, purity, standard and price", icon: Info },
+    { title: "Right to Choose", description: "Access to variety of goods at competitive prices", icon: CheckCircle },
+    { title: "Right to be Heard", description: "Consumer interests receive due consideration", icon: AlertCircle },
+    { title: "Right to Seek Redressal", description: "File complaints for defective goods or deficient services", icon: Gavel },
+    { title: "Right to Consumer Education", description: "Acquire knowledge to become an informed consumer", icon: ShoppingBag },
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
+    <div className="min-h-screen bg-background">
       <Header />
-      <main className="container px-4 py-8 md:px-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-colors mb-6">
-          <ArrowLeft className="h-4 w-4" />
-          Back to Home
-        </Link>
+      
+      {/* Hero Section */}
+      <section className="relative overflow-hidden py-16 md:py-24">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: `url(${consumerRightsBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-background/80 to-background" />
         
-        <div className="max-w-4xl mx-auto space-y-6">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+        <div className="relative container px-4 md:px-8">
+          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors mb-8 group">
+            <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </Link>
+          
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-full mb-6 backdrop-blur-sm">
+              <ShoppingBag className="h-12 w-12 text-primary" />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary via-primary-light to-accent bg-clip-text text-transparent">
               Consumer Rights in India
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Understanding your rights under Consumer Protection Act, 2019
             </p>
           </div>
+        </div>
+      </section>
 
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Consumer Protection Act, 2019</CardTitle>
-              <CardDescription>Comprehensive law for consumer protection</CardDescription>
+      <main className="container px-4 pb-16 md:px-8">
+        <div className="max-w-5xl mx-auto space-y-8">
+          
+          {/* Consumer Protection Act */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Gavel className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Consumer Protection Act, 2019
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Comprehensive law for consumer protection</CardDescription>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <p>
-                The Consumer Protection Act, 2019 replaced the earlier Act of 1986 and provides a robust framework to safeguard consumer interests and uphold fairness in trade and commerce. The Act empowers consumers to seek redress for unfair trade practices and defective goods or services.
+            <CardContent className="text-base leading-relaxed pt-2">
+              <p className="mb-6">
+                The Consumer Protection Act, 2019 replaced the earlier Act of 1986 and provides a robust framework to safeguard consumer interests and uphold fairness in trade and commerce.
               </p>
-              <div>
-                <h3 className="font-bold text-lg mb-2">Key Objectives:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Protection of consumer rights</li>
-                  <li>Establishment of consumer protection councils</li>
-                  <li>Creation of Consumer Disputes Redressal Commissions</li>
-                  <li>Regulation of e-commerce and direct selling</li>
-                  <li>Prevention of unfair trade practices</li>
-                </ul>
+              <h3 className="font-bold text-lg mb-3 text-accent">Key Objectives:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  "Protection of consumer rights",
+                  "Establishment of consumer protection councils",
+                  "Consumer Disputes Redressal Commissions",
+                  "Regulation of e-commerce and direct selling",
+                  "Prevention of unfair trade practices"
+                ].map((item, idx) => (
+                  <div key={idx} className="p-3 bg-card rounded-lg border border-border hover:border-primary/50 transition-colors flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Six Fundamental Consumer Rights</CardTitle>
-              <CardDescription>Rights explicitly outlined in the Consumer Protection Act</CardDescription>
+          {/* Six Fundamental Rights */}
+          <Card className="border-accent/30 bg-gradient-to-br from-accent/10 via-primary/5 to-transparent overflow-hidden">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-xl md:text-2xl text-foreground text-center">
+                Six Fundamental Consumer Rights
+              </CardTitle>
+              <CardDescription className="text-base mt-1 text-center">Rights explicitly outlined in the Consumer Protection Act</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div className="space-y-4">
-                <div className="border-l-4 border-primary pl-4">
-                  <h3 className="font-bold text-lg mb-2">1. Right to Safety</h3>
-                  <p>
-                    Protection against goods and services that are hazardous to life and property. Consumers have the right to expect that products and services will not cause harm when used as intended.
-                  </p>
-                </div>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {sixRights.map((right, idx) => (
+                  <div key={idx} className="p-4 bg-card rounded-xl border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 group/card">
+                    <div className="p-2 bg-primary/10 rounded-lg w-fit mb-3 group-hover/card:bg-primary/20 transition-colors">
+                      <right.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-foreground mb-1">{right.title}</h3>
+                    <p className="text-sm text-muted-foreground">{right.description}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
 
-                <div className="border-l-4 border-primary pl-4">
-                  <h3 className="font-bold text-lg mb-2">2. Right to be Informed</h3>
-                  <p>
-                    Right to be informed about the quality, quantity, potency, purity, standard, and price of goods or services. This protects consumers against fraudulent, deceitful, or misleading advertisements and labeling.
-                  </p>
+          {/* Disputes Redressal */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Gavel className="h-6 w-6 text-primary" />
                 </div>
-
-                <div className="border-l-4 border-primary pl-4">
-                  <h3 className="font-bold text-lg mb-2">3. Right to Choose</h3>
-                  <p>
-                    Right to access a variety of goods and services at competitive prices. Consumers should have the freedom to select from multiple options without being forced to buy a particular brand or product.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-primary pl-4">
-                  <h3 className="font-bold text-lg mb-2">4. Right to be Heard</h3>
-                  <p>
-                    Right to be heard and assured that consumer interests will receive due consideration. Consumers have the right to represent their interests in forums for redressal of consumer grievances.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-primary pl-4">
-                  <h3 className="font-bold text-lg mb-2">5. Right to Seek Redressal</h3>
-                  <p>
-                    Right to seek redressal against unfair trade practices or restrictive trade practices. Consumers can file complaints and seek compensation for defective goods or deficient services.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-primary pl-4">
-                  <h3 className="font-bold text-lg mb-2">6. Right to Consumer Education</h3>
-                  <p>
-                    Right to acquire knowledge and skills to become an informed consumer. This includes awareness about consumer rights, responsibilities, and available remedies.
-                  </p>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    Consumer Disputes Redressal Commissions
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Three-tier quasi-judicial mechanism</CardDescription>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Consumer Disputes Redressal Commissions</CardTitle>
-              <CardDescription>Three-tier quasi-judicial mechanism</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">District Commission:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Handles complaints where value of goods or services does not exceed ₹1 crore</li>
-                  <li>Present in every district</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg mb-2">State Commission:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Handles complaints exceeding ₹1 crore but not exceeding ₹10 crores</li>
-                  <li>Acts as appellate authority over District Commission decisions</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg mb-2">National Commission:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Handles complaints exceeding ₹10 crores</li>
-                  <li>Acts as appellate authority over State Commission decisions</li>
-                  <li>Highest consumer court in the country</li>
-                </ul>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 bg-primary/5 rounded-xl border-l-4 border-primary">
+                  <h3 className="font-bold text-primary mb-2">District Commission</h3>
+                  <p className="text-sm text-muted-foreground mb-2">Complaints up to ₹1 crore</p>
+                  <p className="text-xs text-muted-foreground">Present in every district</p>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-xl border-l-4 border-primary">
+                  <h3 className="font-bold text-primary mb-2">State Commission</h3>
+                  <p className="text-sm text-muted-foreground mb-2">₹1 crore to ₹10 crores</p>
+                  <p className="text-xs text-muted-foreground">Appellate authority over District</p>
+                </div>
+                <div className="p-4 bg-primary/5 rounded-xl border-l-4 border-primary">
+                  <h3 className="font-bold text-primary mb-2">National Commission</h3>
+                  <p className="text-sm text-muted-foreground mb-2">Above ₹10 crores</p>
+                  <p className="text-xs text-muted-foreground">Highest consumer court</p>
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">How to File a Consumer Complaint</CardTitle>
-              <CardDescription>Step-by-step process for seeking redressal</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Steps to File Complaint:</h3>
-                <ol className="list-decimal list-inside space-y-3 ml-4">
-                  <li>
-                    <strong>Identify the appropriate forum:</strong> Based on the value of goods/services
-                  </li>
-                  <li>
-                    <strong>Prepare the complaint:</strong> Include details of the complainant, opposite party, facts, and relief sought
-                  </li>
-                  <li>
-                    <strong>Attach supporting documents:</strong> Bills, receipts, warranty cards, correspondence
-                  </li>
-                  <li>
-                    <strong>File online or offline:</strong> Use e-Daakhil portal (edaakhil.nic.in) or submit physically
-                  </li>
-                  <li>
-                    <strong>Pay fee if required:</strong> No fee for complaints up to ₹5 lakhs
-                  </li>
-                  <li>
-                    <strong>Attend hearings:</strong> Cooperate with the commission proceedings
-                  </li>
-                </ol>
+          {/* How to File Complaint */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <AlertCircle className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    How to File a Consumer Complaint
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Step-by-step process for seeking redressal</CardDescription>
+                </div>
               </div>
-              <div className="bg-accent/10 p-4 rounded-lg">
-                <h3 className="font-bold text-lg mb-2">Important Points:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Complaint must be filed within 2 years from the date of cause of action</li>
-                  <li>No court fee for complaints up to ₹5 lakhs</li>
-                  <li>Complaints can be filed online through National Consumer Helpline Portal</li>
-                  <li>Consumer can appear in person or through authorized agent</li>
+            </CardHeader>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <div className="space-y-3 mb-6">
+                {[
+                  { step: 1, title: "Identify the appropriate forum", desc: "Based on value of goods/services" },
+                  { step: 2, title: "Prepare the complaint", desc: "Details of complainant, opposite party, facts, relief sought" },
+                  { step: 3, title: "Attach supporting documents", desc: "Bills, receipts, warranty cards, correspondence" },
+                  { step: 4, title: "File online or offline", desc: "Use e-Daakhil portal (edaakhil.nic.in)" },
+                  { step: 5, title: "Pay fee if required", desc: "No fee for complaints up to ₹5 lakhs" },
+                  { step: 6, title: "Attend hearings", desc: "Cooperate with commission proceedings" },
+                ].map((item) => (
+                  <div key={item.step} className="flex gap-4 items-start p-3 bg-card rounded-lg border border-border hover:border-primary/50 transition-colors">
+                    <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center shrink-0">
+                      <span className="text-primary font-bold text-sm">{item.step}</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-foreground">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="p-4 bg-accent/10 rounded-xl border border-accent/20">
+                <h3 className="font-bold text-accent mb-2">Important Points:</h3>
+                <ul className="space-y-1 text-sm text-muted-foreground">
+                  <li>• Complaint must be filed within 2 years from date of cause of action</li>
+                  <li>• No court fee for complaints up to ₹5 lakhs</li>
+                  <li>• Consumer can appear in person or through authorized agent</li>
                 </ul>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">E-commerce and Consumer Rights</CardTitle>
-              <CardDescription>Special provisions for online shopping</CardDescription>
+          {/* E-commerce */}
+          <Card className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-elegant overflow-hidden group">
+            <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors">
+                  <Globe className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground group-hover:text-primary transition-colors">
+                    E-commerce and Consumer Rights
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">Special provisions for online shopping</CardDescription>
+                </div>
+              </div>
             </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <p>
-                The Consumer Protection (E-Commerce) Rules, 2020 provide additional safeguards for online consumers:
-              </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>E-commerce platforms must provide clear information about return, refund, exchange, warranty, and guarantee</li>
-                <li>No manipulation of search results to misguide consumers</li>
-                <li>Mandatory display of country of origin</li>
-                <li>Grievance redressal mechanism within 48 hours</li>
-                <li>Protection against fake reviews and misleading advertisements</li>
-                <li>Clear display of total price including all charges</li>
-                <li>No discrimination between buyers</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Unfair Trade Practices</CardTitle>
-              <CardDescription>What constitutes unfair trade practice</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div>
-                <h3 className="font-bold text-lg mb-2">Examples of Unfair Trade Practices:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>False or misleading representation about goods or services</li>
-                  <li>False representation about price, quality, or standard</li>
-                  <li>False or misleading advertisement</li>
-                  <li>Selling goods or services at a price higher than MRP</li>
-                  <li>Hoarding or destruction of goods to raise prices</li>
-                  <li>Refusing to sell goods or provide services</li>
-                  <li>Not issuing proper bills or receipts</li>
-                  <li>Using deceptive trade practices</li>
-                </ul>
+            <CardContent className="text-base leading-relaxed pt-2">
+              <p className="mb-4">The Consumer Protection (E-Commerce) Rules, 2020 provide additional safeguards:</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  "Clear return, refund, exchange policies",
+                  "No manipulation of search results",
+                  "Mandatory display of country of origin",
+                  "Grievance redressal within 48 hours",
+                  "Protection against fake reviews",
+                  "Clear display of total price",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 p-2">
+                    <CheckCircle className="h-4 w-4 text-primary shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-primary/20 bg-primary/10">
-            <CardHeader>
-              <CardTitle className="text-2xl">National Consumer Helpline</CardTitle>
-              <CardDescription>24x7 assistance for consumers</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-base leading-relaxed">
-              <div className="text-center py-4">
-                <p className="text-3xl font-bold text-primary mb-2">1800-11-4000</p>
-                <p className="text-lg">Toll-Free National Consumer Helpline</p>
+          {/* National Helpline */}
+          <Card className="border-accent/30 bg-gradient-to-br from-primary/10 via-accent/10 to-transparent overflow-hidden">
+            <CardHeader className="pb-4">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-accent/20 rounded-xl">
+                  <Phone className="h-6 w-6 text-accent" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl md:text-2xl text-foreground">
+                    National Consumer Helpline
+                  </CardTitle>
+                  <CardDescription className="text-base mt-1">24x7 assistance for consumers</CardDescription>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold text-lg mb-2">Services Provided:</h3>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li>Information about consumer rights</li>
-                  <li>Guidance on filing complaints</li>
-                  <li>Mediation and conciliation services</li>
-                  <li>Assistance in 17 languages</li>
-                  <li>Online complaint registration</li>
-                </ul>
+            </CardHeader>
+            <CardContent>
+              <div className="text-center py-6 mb-4 bg-card rounded-xl border border-border">
+                <p className="text-4xl md:text-5xl font-bold text-primary mb-2">1800-11-4000</p>
+                <p className="text-lg text-muted-foreground">Toll-Free National Consumer Helpline</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {[
+                  "Information about consumer rights",
+                  "Guidance on filing complaints",
+                  "Mediation and conciliation services",
+                  "Assistance in 17 languages",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 p-2">
+                    <CheckCircle className="h-4 w-4 text-accent shrink-0" />
+                    <span className="text-sm">{item}</span>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
+
         </div>
       </main>
     </div>
