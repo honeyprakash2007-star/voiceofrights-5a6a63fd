@@ -13,22 +13,10 @@ const SelfDefenseVideos = () => {
       duration: "10:15"
     },
     {
-      title: "Women's Self Defense - Street Safety Tips",
-      description: "Essential awareness and prevention strategies for staying safe",
-      videoId: "0HvMeZlYTsc",
-      duration: "9:25"
-    },
-    {
       title: "Self Defense Against Common Attacks",
       description: "Practical techniques to defend against grabs and holds",
       videoId: "T7aNSRoDCmg",
       duration: "12:30"
-    },
-    {
-      title: "Escape Techniques for Women",
-      description: "How to break free from common holds and grabs",
-      videoId: "T2Kf7vA5S4s",
-      duration: "11:48"
     }
   ];
 
