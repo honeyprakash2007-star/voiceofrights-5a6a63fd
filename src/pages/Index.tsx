@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import EmergencyHelplines from "@/components/EmergencyHelplines";
+import FAQ from "@/components/FAQ";
 
 import heroBackground from "@/assets/hero-background.png";
 import legalRightsBg from "@/assets/legal-rights-bg.png";
@@ -121,6 +122,11 @@ const Index = () => {
         {/* Emergency Helplines Section */}
         <div className="container px-4 md:px-8 mt-12">
           <EmergencyHelplines />
+        </div>
+
+        {/* FAQ Section */}
+        <div className="mt-16">
+          <FAQ />
         </div>
 
         {/* Footer */}
