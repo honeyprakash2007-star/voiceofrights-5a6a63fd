@@ -1,4 +1,4 @@
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -51,18 +51,18 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-transparent to-purple-950/30">
+    <section className="py-16 px-4 bg-gradient-to-b from-transparent to-primary/5">
       <div className="container mx-auto max-w-4xl">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-purple-500/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
-            <HelpCircle className="w-5 h-5 text-purple-400" />
-            <span className="text-purple-300 text-sm font-medium">Got Questions?</span>
+          <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
+            <HelpCircle className="w-5 h-5 text-primary" />
+            <span className="text-primary text-sm font-medium">Got Questions?</span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Frequently Asked <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Questions</span>
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            Frequently Asked <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Questions</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Find answers to common legal questions and learn more about your rights and protections.
           </p>
         </div>
@@ -73,17 +73,17 @@ const FAQ = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 px-6 overflow-hidden data-[state=open]:border-purple-500/50 transition-colors"
+              className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border px-6 overflow-hidden data-[state=open]:border-primary/50 transition-colors"
             >
-              <AccordionTrigger className="text-left text-white hover:text-purple-300 py-5 [&[data-state=open]>svg]:rotate-180">
+              <AccordionTrigger className="text-left text-foreground hover:text-primary py-5 [&[data-state=open]>svg]:rotate-180">
                 <span className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center text-sm font-bold">
+                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-sm font-bold text-primary-foreground">
                     {index + 1}
                   </span>
                   <span className="font-medium">{faq.question}</span>
                 </span>
               </AccordionTrigger>
-              <AccordionContent className="text-gray-300 pb-5 pl-11">
+              <AccordionContent className="text-muted-foreground pb-5 pl-11">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
@@ -92,10 +92,10 @@ const FAQ = () => {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <p className="text-gray-400 mb-4">Still have questions?</p>
+          <p className="text-muted-foreground mb-4">Still have questions?</p>
           <a 
             href="/glossary" 
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-medium hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-purple-500/25"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-secondary text-primary-foreground px-6 py-3 rounded-full font-medium hover:opacity-90 transition-all shadow-lg hover:shadow-primary/25"
           >
             <HelpCircle className="w-5 h-5" />
             Ask our AI Assistant

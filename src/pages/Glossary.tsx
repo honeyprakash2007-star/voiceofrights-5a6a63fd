@@ -149,40 +149,40 @@ const Glossary = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section with AI Bot */}
-      <section className="relative py-16 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-blue-900/20 opacity-30"></div>
+      <section className="relative py-16 px-4 overflow-hidden bg-gradient-hero">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-50"></div>
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-8">
             {/* Bot Image */}
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse"></div>
               <div className="relative">
                 <img 
                   src={legalAiBot} 
                   alt="Legal AI Assistant" 
                   className="w-64 h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full p-2 shadow-lg animate-bounce">
-                  <Sparkles className="w-6 h-6 text-white" />
+                <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-accent to-secondary rounded-full p-2 shadow-lg animate-bounce">
+                  <Sparkles className="w-6 h-6 text-accent-foreground" />
                 </div>
               </div>
             </div>
             
             {/* Title & Description */}
             <div className="text-center lg:text-left flex-1">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
-                <Bot className="w-5 h-5 text-purple-400" />
-                <span className="text-purple-300 text-sm font-medium">AI-Powered Legal Assistant</span>
+              <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
+                <Bot className="w-5 h-5 text-primary-foreground" />
+                <span className="text-primary-foreground text-sm font-medium">AI-Powered Legal Assistant</span>
               </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-                Legal Terms <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">Dictionary</span>
+              <h1 className="text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+                Legal Terms <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">Dictionary</span>
               </h1>
-              <p className="text-lg text-gray-300 max-w-xl">
+              <p className="text-lg text-primary-foreground/80 max-w-xl">
                 Your intelligent guide to understanding legal terminology. Search terms, explore categories, or chat with our AI assistant for instant explanations.
               </p>
             </div>
@@ -193,16 +193,16 @@ const Glossary = () => {
       {/* AI Chat Section */}
       <section className="py-8 px-4">
         <div className="container mx-auto max-w-4xl">
-          <div className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
-            <div className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 p-4 border-b border-white/10">
+          <div className="bg-card backdrop-blur-xl rounded-3xl border border-border overflow-hidden shadow-2xl">
+            <div className="bg-gradient-to-r from-primary/20 to-secondary/20 p-4 border-b border-border">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                  <Bot className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                  <Bot className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white">Legal AI Assistant</h3>
-                  <p className="text-xs text-green-400 flex items-center gap-1">
-                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                  <h3 className="font-semibold text-foreground">Legal AI Assistant</h3>
+                  <p className="text-xs text-accent flex items-center gap-1">
+                    <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
                     Online - Ready to help
                   </p>
                 </div>
@@ -210,13 +210,13 @@ const Glossary = () => {
             </div>
             
             {/* Chat Messages */}
-            <div className="h-64 overflow-y-auto p-4 space-y-4">
+            <div className="h-64 overflow-y-auto p-4 space-y-4 bg-muted/30">
               {chatHistory.map((msg, index) => (
                 <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                     msg.role === 'user' 
-                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white' 
-                      : 'bg-white/10 text-gray-200'
+                      ? 'bg-gradient-to-r from-primary to-secondary text-primary-foreground' 
+                      : 'bg-card text-foreground border border-border'
                   }`}>
                     <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                   </div>
@@ -225,18 +225,18 @@ const Glossary = () => {
             </div>
             
             {/* Chat Input */}
-            <div className="p-4 border-t border-white/10">
+            <div className="p-4 border-t border-border bg-card">
               <div className="flex gap-2">
                 <Input
                   value={chatMessage}
                   onChange={(e) => setChatMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                   placeholder="Ask me about any legal term..."
-                  className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                  className="flex-1 bg-muted border-border text-foreground placeholder:text-muted-foreground"
                 />
                 <Button 
                   onClick={handleSendMessage}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                  className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground"
                 >
                   <ArrowRight className="w-5 h-5" />
                 </Button>
@@ -251,12 +251,12 @@ const Glossary = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row gap-4 mb-8">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search legal terms..."
-                className="pl-12 bg-white/10 border-white/20 text-white placeholder:text-gray-400 h-12"
+                className="pl-12 bg-card border-border text-foreground placeholder:text-muted-foreground h-12"
               />
             </div>
             <div className="flex gap-2 flex-wrap">
@@ -266,8 +266,8 @@ const Glossary = () => {
                   onClick={() => setSelectedCategory(category)}
                   variant={selectedCategory === category ? "default" : "outline"}
                   className={selectedCategory === category 
-                    ? "bg-gradient-to-r from-purple-600 to-pink-600" 
-                    : "border-white/20 text-white hover:bg-white/10"
+                    ? "bg-gradient-to-r from-primary to-secondary text-primary-foreground" 
+                    : "border-border text-foreground hover:bg-muted"
                   }
                 >
                   {category}
@@ -281,18 +281,18 @@ const Glossary = () => {
             {filteredTerms.map((term, index) => (
               <div 
                 key={index}
-                className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all duration-300"
+                className="group bg-card backdrop-blur-sm rounded-2xl p-6 border border-border hover:border-primary/50 hover:bg-muted/50 transition-all duration-300"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                     {term.term}
                   </h3>
-                  <BookOpen className="w-5 h-5 text-purple-400" />
+                  <BookOpen className="w-5 h-5 text-primary" />
                 </div>
-                <span className="inline-block px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full mb-3">
+                <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-xs rounded-full mb-3">
                   {term.category}
                 </span>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {term.definition}
                 </p>
               </div>
@@ -302,9 +302,9 @@ const Glossary = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-white/10">
+      <footer className="py-8 px-4 border-t border-border">
         <div className="container mx-auto text-center">
-          <p className="text-gray-400">© 2024 Voice of Rights. Empowering citizens with legal knowledge.</p>
+          <p className="text-muted-foreground">© 2024 Voice of Rights. Empowering citizens with legal knowledge.</p>
         </div>
       </footer>
     </div>
