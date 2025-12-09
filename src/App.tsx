@@ -11,6 +11,7 @@ import ConsumerRights from "./pages/ConsumerRights";
 import CyberSafety from "./pages/CyberSafety";
 import SearchResults from "./pages/SearchResults";
 import SelfDefenseVideos from "./pages/SelfDefenseVideos";
+import Glossary from "./pages/Glossary";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/cyber-safety" element={<CyberSafety />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/self-defense-videos" element={<SelfDefenseVideos />} />
+          <Route path="/glossary" element={<Glossary />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
