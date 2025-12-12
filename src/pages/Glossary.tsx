@@ -1,117 +1,99 @@
 import { useState } from "react";
-import { Search, BookOpen, Bot, Sparkles, ArrowRight } from "lucide-react";
+import { Search, BookOpen, Bot, Sparkles, ArrowRight, Globe } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import legalAiBot from "@/assets/legal-ai-bot.png";
 
-const legalTerms = [
-  {
-    term: "Affidavit",
-    definition: "A written statement confirmed by oath or affirmation, used as evidence in court proceedings.",
-    category: "Court Procedures"
-  },
-  {
-    term: "Bail",
-    definition: "The temporary release of an accused person awaiting trial, sometimes on condition that a sum of money is lodged to guarantee their appearance in court.",
-    category: "Criminal Law"
-  },
-  {
-    term: "Cognizable Offense",
-    definition: "An offense for which a police officer may arrest without a warrant and can start investigation without the permission of a court.",
-    category: "Criminal Law"
-  },
-  {
-    term: "Defamation",
-    definition: "The action of damaging the good reputation of someone through false statements. It can be libel (written) or slander (spoken).",
-    category: "Civil Law"
-  },
-  {
-    term: "FIR (First Information Report)",
-    definition: "A written document prepared by police when they receive information about the commission of a cognizable offense.",
-    category: "Criminal Law"
-  },
-  {
-    term: "Habeas Corpus",
-    definition: "A writ requiring a person under arrest to be brought before a judge or into court, to secure the person's release unless lawful grounds are shown for their detention.",
-    category: "Constitutional Law"
-  },
-  {
-    term: "Injunction",
-    definition: "A judicial order that restrains a person from beginning or continuing an action threatening or invading the legal right of another.",
-    category: "Civil Law"
-  },
-  {
-    term: "Jurisprudence",
-    definition: "The theory or philosophy of law, or the study of law and the structure of the legal system.",
-    category: "Legal Theory"
-  },
-  {
-    term: "Locus Standi",
-    definition: "The right or capacity to bring an action or to appear in a court. It refers to a party's standing to sue.",
-    category: "Court Procedures"
-  },
-  {
-    term: "Mens Rea",
-    definition: "The intention or knowledge of wrongdoing that constitutes part of a crime, as opposed to the action or conduct of the accused.",
-    category: "Criminal Law"
-  },
-  {
-    term: "Non-Cognizable Offense",
-    definition: "An offense for which a police officer cannot arrest without a warrant and cannot investigate without the permission of a court.",
-    category: "Criminal Law"
-  },
-  {
-    term: "PIL (Public Interest Litigation)",
-    definition: "Litigation for the protection of public interest. It is a case filed in a court of law for the protection of public interest.",
-    category: "Constitutional Law"
-  },
-  {
-    term: "Quash",
-    definition: "To reject or void, especially by legal procedure. Courts can quash proceedings if they find them to be without legal basis.",
-    category: "Court Procedures"
-  },
-  {
-    term: "RLS (Right to Legal Services)",
-    definition: "The right of every citizen to receive free legal aid and services if they cannot afford legal representation.",
-    category: "Constitutional Law"
-  },
-  {
-    term: "Suo Motu",
-    definition: "An action taken by a court on its own motion, without any request by the parties involved.",
-    category: "Court Procedures"
-  },
-  {
-    term: "Tort",
-    definition: "A wrongful act or an infringement of a right leading to civil legal liability, other than under contract.",
-    category: "Civil Law"
-  },
-  {
-    term: "Ultra Vires",
-    definition: "Beyond one's legal power or authority. An act that requires legal authority but is done without it.",
-    category: "Legal Theory"
-  },
-  {
-    term: "Writ",
-    definition: "A form of written command in the name of a court or other legal authority to act, or abstain from acting, in some way.",
-    category: "Constitutional Law"
-  }
-];
+type Language = "en" | "kn" | "hi";
 
-const categories = ["All", ...Array.from(new Set(legalTerms.map(t => t.category)))];
+const translations = {
+  en: {
+    aiPowered: "AI-Powered Legal Assistant",
+    legalTerms: "Legal Terms",
+    dictionary: "Dictionary",
+    heroDesc: "Your intelligent guide to understanding legal terminology. Search terms, explore categories, or chat with our AI assistant for instant explanations.",
+    legalAiAssistant: "Legal AI Assistant",
+    online: "Online - Ready to help",
+    searchPlaceholder: "Search legal terms...",
+    askPlaceholder: "Ask me about any legal term...",
+    footer: "© 2024 Voice of Rights. Empowering citizens with legal knowledge.",
+    all: "All",
+    botGreeting: "Hello! I'm your Legal Assistant. Ask me anything about legal terms, rights, or laws. I'm here to help you understand complex legal concepts in simple language.",
+  },
+  kn: {
+    aiPowered: "AI-ಚಾಲಿತ ಕಾನೂನು ಸಹಾಯಕ",
+    legalTerms: "ಕಾನೂನು ಪದಗಳು",
+    dictionary: "ನಿಘಂಟು",
+    heroDesc: "ಕಾನೂನು ಪರಿಭಾಷೆಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ನಿಮ್ಮ ಬುದ್ಧಿವಂತ ಮಾರ್ಗದರ್ಶಿ. ಪದಗಳನ್ನು ಹುಡುಕಿ, ವರ್ಗಗಳನ್ನು ಅನ್ವೇಷಿಸಿ, ಅಥವಾ ತ್ವರಿತ ವಿವರಣೆಗಳಿಗಾಗಿ ನಮ್ಮ AI ಸಹಾಯಕನೊಂದಿಗೆ ಚಾಟ್ ಮಾಡಿ.",
+    legalAiAssistant: "ಕಾನೂನು AI ಸಹಾಯಕ",
+    online: "ಆನ್‌ಲೈನ್ - ಸಹಾಯಕ್ಕೆ ಸಿದ್ಧ",
+    searchPlaceholder: "ಕಾನೂನು ಪದಗಳನ್ನು ಹುಡುಕಿ...",
+    askPlaceholder: "ಯಾವುದೇ ಕಾನೂನು ಪದದ ಬಗ್ಗೆ ನನ್ನನ್ನು ಕೇಳಿ...",
+    footer: "© 2024 ವಾಯ್ಸ್ ಆಫ್ ರೈಟ್ಸ್. ಕಾನೂನು ಜ್ಞಾನದೊಂದಿಗೆ ನಾಗರಿಕರನ್ನು ಸಬಲೀಕರಣಗೊಳಿಸುವುದು.",
+    all: "ಎಲ್ಲಾ",
+    botGreeting: "ನಮಸ್ಕಾರ! ನಾನು ನಿಮ್ಮ ಕಾನೂನು ಸಹಾಯಕ. ಕಾನೂನು ಪದಗಳು, ಹಕ್ಕುಗಳು ಅಥವಾ ಕಾನೂನುಗಳ ಬಗ್ಗೆ ನನ್ನನ್ನು ಏನಾದರೂ ಕೇಳಿ.",
+  },
+  hi: {
+    aiPowered: "AI-संचालित कानूनी सहायक",
+    legalTerms: "कानूनी शब्द",
+    dictionary: "शब्दकोश",
+    heroDesc: "कानूनी शब्दावली को समझने के लिए आपका बुद्धिमान मार्गदर्शक। शब्द खोजें, श्रेणियां एक्सप्लोर करें, या तुरंत स्पष्टीकरण के लिए हमारे AI सहायक से चैट करें।",
+    legalAiAssistant: "कानूनी AI सहायक",
+    online: "ऑनलाइन - मदद के लिए तैयार",
+    searchPlaceholder: "कानूनी शब्द खोजें...",
+    askPlaceholder: "किसी भी कानूनी शब्द के बारे में पूछें...",
+    footer: "© 2024 वॉइस ऑफ राइट्स। कानूनी ज्ञान के साथ नागरिकों को सशक्त बनाना।",
+    all: "सभी",
+    botGreeting: "नमस्ते! मैं आपका कानूनी सहायक हूं। कानूनी शब्दों, अधिकारों या कानूनों के बारे में मुझसे कुछ भी पूछें।",
+  },
+};
+
+const legalTerms = {
+  en: [
+    { term: "Affidavit", definition: "A written statement confirmed by oath or affirmation, used as evidence in court proceedings.", category: "Court Procedures" },
+    { term: "Bail", definition: "The temporary release of an accused person awaiting trial, sometimes on condition that a sum of money is lodged.", category: "Criminal Law" },
+    { term: "Cognizable Offense", definition: "An offense for which a police officer may arrest without a warrant.", category: "Criminal Law" },
+    { term: "FIR", definition: "A written document prepared by police when they receive information about a cognizable offense.", category: "Criminal Law" },
+    { term: "Habeas Corpus", definition: "A writ requiring a person under arrest to be brought before a judge.", category: "Constitutional Law" },
+    { term: "PIL", definition: "Public Interest Litigation - a case filed for the protection of public interest.", category: "Constitutional Law" },
+  ],
+  kn: [
+    { term: "ಅಫಿಡವಿಟ್", definition: "ಪ್ರಮಾಣ ಅಥವಾ ದೃಢೀಕರಣದಿಂದ ದೃಢೀಕರಿಸಲ್ಪಟ್ಟ ಲಿಖಿತ ಹೇಳಿಕೆ, ನ್ಯಾಯಾಲಯದ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಸಾಕ್ಷ್ಯವಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ.", category: "ನ್ಯಾಯಾಲಯ ಪ್ರಕ್ರಿಯೆಗಳು" },
+    { term: "ಜಾಮೀನು", definition: "ವಿಚಾರಣೆಗೆ ಕಾಯುತ್ತಿರುವ ಆರೋಪಿಯ ತಾತ್ಕಾಲಿಕ ಬಿಡುಗಡೆ.", category: "ಕ್ರಿಮಿನಲ್ ಕಾನೂನು" },
+    { term: "ಅರಿವಿನ ಅಪರಾಧ", definition: "ಪೊಲೀಸ್ ಅಧಿಕಾರಿ ವಾರಂಟ್ ಇಲ್ಲದೆ ಬಂಧಿಸಬಹುದಾದ ಅಪರಾಧ.", category: "ಕ್ರಿಮಿನಲ್ ಕಾನೂನು" },
+    { term: "FIR", definition: "ಅರಿವಿನ ಅಪರಾಧದ ಬಗ್ಗೆ ಮಾಹಿತಿ ಸ್ವೀಕರಿಸಿದಾಗ ಪೊಲೀಸರು ತಯಾರಿಸುವ ಲಿಖಿತ ದಾಖಲೆ.", category: "ಕ್ರಿಮಿನಲ್ ಕಾನೂನು" },
+    { term: "ಹೇಬಿಯಸ್ ಕಾರ್ಪಸ್", definition: "ಬಂಧನದಲ್ಲಿರುವ ವ್ಯಕ್ತಿಯನ್ನು ನ್ಯಾಯಾಧೀಶರ ಮುಂದೆ ಹಾಜರುಪಡಿಸುವ ಆದೇಶ.", category: "ಸಾಂವಿಧಾನಿಕ ಕಾನೂನು" },
+    { term: "PIL", definition: "ಸಾರ್ವಜನಿಕ ಹಿತಾಸಕ್ತಿ ದಾವೆ - ಸಾರ್ವಜನಿಕ ಹಿತಾಸಕ್ತಿಯ ರಕ್ಷಣೆಗಾಗಿ ದಾಖಲಿಸಲಾದ ಪ್ರಕರಣ.", category: "ಸಾಂವಿಧಾನಿಕ ಕಾನೂನು" },
+  ],
+  hi: [
+    { term: "शपथ पत्र", definition: "शपथ या प्रतिज्ञान द्वारा पुष्टि किया गया लिखित बयान, अदालती कार्यवाही में साक्ष्य के रूप में उपयोग किया जाता है।", category: "न्यायालय प्रक्रियाएं" },
+    { term: "जमानत", definition: "मुकदमे की प्रतीक्षा कर रहे आरोपी व्यक्ति की अस्थायी रिहाई।", category: "आपराधिक कानून" },
+    { term: "संज्ञेय अपराध", definition: "वह अपराध जिसके लिए पुलिस अधिकारी बिना वारंट के गिरफ्तार कर सकता है।", category: "आपराधिक कानून" },
+    { term: "FIR", definition: "संज्ञेय अपराध की जानकारी मिलने पर पुलिस द्वारा तैयार किया गया लिखित दस्तावेज।", category: "आपराधिक कानून" },
+    { term: "बंदी प्रत्यक्षीकरण", definition: "गिरफ्तार व्यक्ति को न्यायाधीश के समक्ष पेश करने का आदेश।", category: "संवैधानिक कानून" },
+    { term: "PIL", definition: "जनहित याचिका - जनहित की रक्षा के लिए दायर किया गया मामला।", category: "संवैधानिक कानून" },
+  ],
+};
 
 const Glossary = () => {
+  const [language, setLanguage] = useState<Language>("en");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [chatMessage, setChatMessage] = useState("");
+  
+  const t = translations[language];
+  const currentTerms = legalTerms[language];
+  const categories = [t.all, ...Array.from(new Set(currentTerms.map(term => term.category)))];
+
   const [chatHistory, setChatHistory] = useState<Array<{ role: string; content: string }>>([
-    { role: "bot", content: "Hello! I'm your Legal Assistant. Ask me anything about legal terms, rights, or laws. I'm here to help you understand complex legal concepts in simple language." }
+    { role: "bot", content: t.botGreeting }
   ]);
 
-  const filteredTerms = legalTerms.filter(term => {
+  const filteredTerms = currentTerms.filter(term => {
     const matchesSearch = term.term.toLowerCase().includes(searchQuery.toLowerCase()) ||
       term.definition.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || term.category === selectedCategory;
+    const matchesCategory = selectedCategory === t.all || term.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -121,24 +103,22 @@ const Glossary = () => {
     setChatHistory(prev => [...prev, { role: "user", content: chatMessage }]);
     
     const lowerMessage = chatMessage.toLowerCase();
-    let botResponse = "I understand you're asking about legal matters. ";
+    let botResponse = language === "en" ? "I understand you're asking about legal matters. " 
+      : language === "kn" ? "ನೀವು ಕಾನೂನು ವಿಷಯಗಳ ಬಗ್ಗೆ ಕೇಳುತ್ತಿದ್ದೀರಿ ಎಂದು ನಾನು ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇನೆ. "
+      : "मैं समझता हूं कि आप कानूनी मामलों के बारे में पूछ रहे हैं। ";
     
-    const matchedTerm = legalTerms.find(t => 
-      lowerMessage.includes(t.term.toLowerCase())
+    const matchedTerm = currentTerms.find(term => 
+      lowerMessage.includes(term.term.toLowerCase())
     );
     
     if (matchedTerm) {
       botResponse = `**${matchedTerm.term}**: ${matchedTerm.definition}`;
-    } else if (lowerMessage.includes("fir") || lowerMessage.includes("police")) {
-      botResponse = "An FIR (First Information Report) is a written document prepared by police when they receive information about a cognizable offense. You can file an FIR at any police station, and the police are obligated to register it.";
-    } else if (lowerMessage.includes("bail")) {
-      botResponse = "Bail is the temporary release of an accused person awaiting trial. There are different types: Regular Bail, Anticipatory Bail, and Interim Bail. The type depends on your specific situation.";
-    } else if (lowerMessage.includes("lawyer") || lowerMessage.includes("advocate")) {
-      botResponse = "If you need legal representation but cannot afford it, you have the Right to Free Legal Aid under Article 39A of the Constitution. You can contact your nearest Legal Services Authority for assistance.";
-    } else if (lowerMessage.includes("rights") || lowerMessage.includes("fundamental")) {
-      botResponse = "Fundamental Rights are guaranteed under Part III of the Indian Constitution (Articles 12-35). They include Right to Equality, Right to Freedom, Right against Exploitation, Right to Freedom of Religion, Cultural and Educational Rights, and Right to Constitutional Remedies.";
     } else {
-      botResponse = "That's an interesting legal question. For specific legal advice, I recommend consulting with a qualified lawyer. However, I can help explain general legal terms and concepts. Try asking about specific terms like 'FIR', 'Bail', 'Habeas Corpus', or 'PIL'.";
+      botResponse = language === "en" 
+        ? "That's an interesting legal question. Try asking about specific terms like 'FIR', 'Bail', 'Habeas Corpus', or 'PIL'."
+        : language === "kn"
+        ? "ಅದು ಒಂದು ಆಸಕ್ತಿದಾಯಕ ಕಾನೂನು ಪ್ರಶ್ನೆ. 'FIR', 'ಜಾಮೀನು', 'ಹೇಬಿಯಸ್ ಕಾರ್ಪಸ್' ನಂತಹ ನಿರ್ದಿಷ್ಟ ಪದಗಳ ಬಗ್ಗೆ ಕೇಳಿ."
+        : "यह एक दिलचस्प कानूनी सवाल है। 'FIR', 'जमानत', 'बंदी प्रत्यक्षीकरण' जैसे विशिष्ट शब्दों के बारे में पूछें।";
     }
     
     setTimeout(() => {
@@ -155,6 +135,39 @@ const Glossary = () => {
       {/* Hero Section with AI Bot */}
       <section className="relative py-16 px-4 overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-50"></div>
+        
+        {/* Language Selector */}
+        <div className="container mx-auto max-w-6xl relative z-20 mb-4">
+          <div className="flex justify-end">
+            <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border rounded-full p-1">
+              <Globe className="w-4 h-4 text-muted-foreground ml-2" />
+              <Button
+                variant={language === "en" ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setLanguage("en")}
+                className={language === "en" ? "bg-primary text-primary-foreground rounded-full" : "text-foreground rounded-full"}
+              >
+                English
+              </Button>
+              <Button
+                variant={language === "kn" ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setLanguage("kn")}
+                className={language === "kn" ? "bg-primary text-primary-foreground rounded-full" : "text-foreground rounded-full"}
+              >
+                ಕನ್ನಡ
+              </Button>
+              <Button
+                variant={language === "hi" ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setLanguage("hi")}
+                className={language === "hi" ? "bg-primary text-primary-foreground rounded-full" : "text-foreground rounded-full"}
+              >
+                हिंदी
+              </Button>
+            </div>
+          </div>
+        </div>
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-8">
@@ -177,13 +190,13 @@ const Glossary = () => {
             <div className="text-center lg:text-left flex-1">
               <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
                 <Bot className="w-5 h-5 text-primary-foreground" />
-                <span className="text-primary-foreground text-sm font-medium">AI-Powered Legal Assistant</span>
+                <span className="text-primary-foreground text-sm font-medium">{t.aiPowered}</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
-                Legal Terms <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">Dictionary</span>
+                {t.legalTerms} <span className="bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent">{t.dictionary}</span>
               </h1>
               <p className="text-lg text-primary-foreground/80 max-w-xl">
-                Your intelligent guide to understanding legal terminology. Search terms, explore categories, or chat with our AI assistant for instant explanations.
+                {t.heroDesc}
               </p>
             </div>
           </div>
@@ -200,10 +213,10 @@ const Glossary = () => {
                   <Bot className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">Legal AI Assistant</h3>
+                  <h3 className="font-semibold text-foreground">{t.legalAiAssistant}</h3>
                   <p className="text-xs text-accent flex items-center gap-1">
                     <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
-                    Online - Ready to help
+                    {t.online}
                   </p>
                 </div>
               </div>
@@ -231,7 +244,7 @@ const Glossary = () => {
                   value={chatMessage}
                   onChange={(e) => setChatMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                  placeholder="Ask me about any legal term..."
+                  placeholder={t.askPlaceholder}
                   className="flex-1 bg-muted border-border text-foreground placeholder:text-muted-foreground"
                 />
                 <Button 
@@ -255,7 +268,7 @@ const Glossary = () => {
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search legal terms..."
+                placeholder={t.searchPlaceholder}
                 className="pl-12 bg-card border-border text-foreground placeholder:text-muted-foreground h-12"
               />
             </div>
@@ -304,7 +317,7 @@ const Glossary = () => {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-border">
         <div className="container mx-auto text-center">
-          <p className="text-muted-foreground">© 2024 Voice of Rights. Empowering citizens with legal knowledge.</p>
+          <p className="text-muted-foreground">{t.footer}</p>
         </div>
       </footer>
     </div>
