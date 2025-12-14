@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ScrollItem {
   title: string;
@@ -15,6 +16,8 @@ interface HorizontalScrollProps {
 }
 
 const HorizontalScroll = ({ title, items }: HorizontalScrollProps) => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-12">
       <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-primary bg-clip-text text-transparent">
@@ -45,7 +48,7 @@ const HorizontalScroll = ({ title, items }: HorizontalScrollProps) => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground">
-                      Click to learn more about your rights and protections
+                      {t('rights.clickMore')}
                     </p>
                   </CardContent>
                 </div>

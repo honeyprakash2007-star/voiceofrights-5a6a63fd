@@ -3,10 +3,13 @@ import logo from "@/assets/balance-logo.png";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,20 +25,23 @@ const Header = () => {
         <Link to="/" className="flex items-center gap-3 transition-transform hover:scale-105 flex-shrink-0">
           <img src={logo} alt="Balance Scale Logo" className="h-12 w-12" />
           <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent md:text-2xl lg:text-3xl">
-            VOICE OF RIGHTS
+            {t('site.title')}
           </h1>
         </Link>
         
-        <form onSubmit={handleSearch} className="relative max-w-md w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search rights & safety..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-background/50"
-          />
-        </form>
+        <div className="flex items-center gap-4 flex-1 max-w-xl justify-end">
+          <form onSubmit={handleSearch} className="relative flex-1 max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder={t('search.placeholder')}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 bg-background/50"
+            />
+          </form>
+          <LanguageSwitcher />
+        </div>
       </div>
     </header>
   );

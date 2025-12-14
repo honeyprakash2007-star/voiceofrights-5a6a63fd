@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import EmergencyHelplines from "@/components/EmergencyHelplines";
 import FAQ from "@/components/FAQ";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import heroBackground from "@/assets/hero-background.png";
 import legalRightsBg from "@/assets/legal-rights-bg.png";
@@ -15,34 +16,36 @@ import defenseToolsBg from "@/assets/defense-tools-bg.png";
 import verbalDeescalationBg from "@/assets/verbal-deescalation-bg.png";
 
 const Index = () => {
+  const { t } = useLanguage();
+
   const rightsItems = [
     {
-      title: "Legal Rights",
-      description: "Fundamental rights of every citizen including freedom, equality, and constitutional remedies",
+      title: t('rights.legal.title'),
+      description: t('rights.legal.desc'),
       link: "/legal-rights",
       bgImage: legalRightsBg
     },
     {
-      title: "Constitutional Rights",
-      description: "The Golden Triangle: Articles 14, 19 & 21 - Core fundamental rights of Indian Constitution",
+      title: t('rights.constitutional.title'),
+      description: t('rights.constitutional.desc'),
       link: "/constitutional-rights",
       bgImage: constitutionalRightsBg
     },
     {
-      title: "Women Protection Laws",
-      description: "Comprehensive laws protecting women from domestic violence, harassment, and discrimination",
+      title: t('rights.women.title'),
+      description: t('rights.women.desc'),
       link: "/women-protection-laws",
       bgImage: womenProtectionBg
     },
     {
-      title: "Consumer Rights",
-      description: "Six fundamental rights protecting consumers and procedures for filing complaints",
+      title: t('rights.consumer.title'),
+      description: t('rights.consumer.desc'),
       link: "/consumer-rights",
       bgImage: consumerRightsBg
     },
     {
-      title: "Cyber Safety Procedures",
-      description: "Essential guidelines and best practices for staying safe in the digital world",
+      title: t('defense.cyber.title'),
+      description: t('defense.cyber.desc'),
       link: "/cyber-safety",
       bgImage: cyberSafetyBg
     }
@@ -50,26 +53,26 @@ const Index = () => {
 
   const selfDefenseItems = [
     {
-      title: "Basic Self Defense Techniques",
-      description: "Essential moves for personal safety from expert instructors",
+      title: t('defense.physical.title'),
+      description: t('defense.physical.desc'),
       link: "/self-defense-videos",
       bgImage: selfDefenseBg
     },
     {
-      title: "Situational Awareness",
-      description: "Stay alert and avoid dangerous situations",
+      title: t('defense.awareness.title'),
+      description: t('defense.awareness.desc'),
       link: "/self-defense-videos",
       bgImage: situationalAwarenessBg
     },
     {
-      title: "Self Defense Tools",
-      description: "Legal personal safety equipment and how to use them",
+      title: t('defense.tools.title'),
+      description: t('defense.tools.desc'),
       link: "/self-defense-videos",
       bgImage: defenseToolsBg
     },
     {
-      title: "Verbal De-escalation",
-      description: "Techniques to defuse confrontations before they escalate",
+      title: t('defense.verbal.title'),
+      description: t('defense.verbal.desc'),
       link: "/self-defense-videos",
       bgImage: verbalDeescalationBg
     }
@@ -91,13 +94,13 @@ const Index = () => {
           <div className="relative container px-4 py-24 md:py-32 md:px-8">
           <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg">
-                Know Your Rights
+                {t('hero.title')}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 mb-4 font-medium">
-                Empowering citizens with knowledge of their legal rights and protections
+                {t('hero.subtitle')}
               </p>
               <p className="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
-                Understanding your rights is the first step towards justice. Explore comprehensive information about legal protections, constitutional guarantees, and safety procedures available to every citizen.
+                {t('hero.description')}
               </p>
             </div>
           </div>
@@ -106,7 +109,7 @@ const Index = () => {
         {/* Know Their Rights Section */}
         <div className="container px-4 md:px-8">
           <HorizontalScroll 
-            title="Know Their Rights"
+            title={t('section.rights')}
             items={rightsItems}
           />
         </div>
@@ -114,7 +117,7 @@ const Index = () => {
         {/* Self Defense Videos Section */}
         <div className="container px-4 md:px-8 mt-8">
           <HorizontalScroll 
-            title="Self Defense Videos"
+            title={t('section.selfDefense')}
             items={selfDefenseItems}
           />
         </div>
