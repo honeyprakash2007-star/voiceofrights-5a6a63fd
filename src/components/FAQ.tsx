@@ -1,16 +1,20 @@
-import { useState } from "react";
-import { HelpCircle, Globe } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import { useLanguage, Language } from "@/contexts/LanguageContext";
 
-type Language = "en" | "kn" | "hi";
-
-const translations = {
+const faqTranslations: Record<Language, {
+  gotQuestions: string;
+  frequentlyAsked: string;
+  questions: string;
+  findAnswers: string;
+  stillHaveQuestions: string;
+  askAi: string;
+}> = {
   en: {
     gotQuestions: "Got Questions?",
     frequentlyAsked: "Frequently Asked",
@@ -37,7 +41,7 @@ const translations = {
   },
 };
 
-const faqs = {
+const faqs: Record<Language, { question: string; answer: string }[]> = {
   en: [
     {
       question: "What is Voice of Rights?",
@@ -107,44 +111,13 @@ const faqs = {
 };
 
 const FAQ = () => {
-  const [language, setLanguage] = useState<Language>("en");
-  const t = translations[language];
+  const { language } = useLanguage();
+  const t = faqTranslations[language];
   const currentFaqs = faqs[language];
 
   return (
     <section className="py-16 px-4 bg-gradient-to-b from-transparent to-primary/5">
       <div className="container mx-auto max-w-4xl">
-        {/* Language Selector */}
-        <div className="flex justify-end mb-6">
-          <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full p-1">
-            <Globe className="w-4 h-4 text-muted-foreground ml-2" />
-            <Button
-              variant={language === "en" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setLanguage("en")}
-              className={language === "en" ? "bg-primary text-primary-foreground rounded-full" : "text-foreground rounded-full"}
-            >
-              English
-            </Button>
-            <Button
-              variant={language === "kn" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setLanguage("kn")}
-              className={language === "kn" ? "bg-primary text-primary-foreground rounded-full" : "text-foreground rounded-full"}
-            >
-              ಕನ್ನಡ
-            </Button>
-            <Button
-              variant={language === "hi" ? "default" : "ghost"}
-              size="sm"
-              onClick={() => setLanguage("hi")}
-              className={language === "hi" ? "bg-primary text-primary-foreground rounded-full" : "text-foreground rounded-full"}
-            >
-              हिंदी
-            </Button>
-          </div>
-        </div>
-
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
