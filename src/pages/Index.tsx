@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import HorizontalScroll from "@/components/HorizontalScroll";
 import EmergencyHelplines from "@/components/EmergencyHelplines";
 import FAQ from "@/components/FAQ";
+import LatestUpdates from "@/components/LatestUpdates";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import heroBackground from "@/assets/hero-background.png";
@@ -120,6 +121,11 @@ const Index = () => {
             title={t('section.selfDefense')}
             items={selfDefenseItems}
           />
+        </div>
+
+        {/* Latest Updates Section */}
+        <div className="container px-4 md:px-8 mt-12">
+          <LatestUpdates />
         </div>
 
         {/* Emergency Helplines Section */}

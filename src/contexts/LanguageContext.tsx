@@ -74,6 +74,23 @@ const translations: Record<Language, Record<string, string>> = {
     'common.learnMore': 'Learn More',
     'common.callNow': 'Call Now',
     'common.search': 'Search',
+    
+    // Latest Updates
+    'updates.title': 'Latest Updates',
+    'updates.subtitle': 'Recent changes in laws and legal news',
+    'updates.readMore': 'Read More',
+    'updates.1.title': 'New Data Protection Bill 2024',
+    'updates.1.desc': 'Parliament passes comprehensive Digital Personal Data Protection Act with stricter privacy norms',
+    'updates.1.date': 'Dec 10, 2024',
+    'updates.2.title': 'Supreme Court Ruling on Article 21',
+    'updates.2.desc': 'Landmark judgment expands Right to Life to include right to clean environment',
+    'updates.2.date': 'Dec 8, 2024',
+    'updates.3.title': 'Consumer Protection Rules Updated',
+    'updates.3.desc': 'New e-commerce guidelines mandate 48-hour refund processing for cancelled orders',
+    'updates.3.date': 'Dec 5, 2024',
+    'updates.4.title': 'Women Safety App Made Mandatory',
+    'updates.4.desc': 'Government mandates installation of safety apps in all public transport vehicles',
+    'updates.4.date': 'Dec 1, 2024',
   },
   hi: {
     // Header
@@ -140,6 +157,23 @@ const translations: Record<Language, Record<string, string>> = {
     'common.learnMore': 'और जानें',
     'common.callNow': 'अभी कॉल करें',
     'common.search': 'खोजें',
+    
+    // Latest Updates
+    'updates.title': 'नवीनतम अपडेट',
+    'updates.subtitle': 'कानूनों में हाल के बदलाव और कानूनी समाचार',
+    'updates.readMore': 'और पढ़ें',
+    'updates.1.title': 'नया डेटा संरक्षण विधेयक 2024',
+    'updates.1.desc': 'संसद ने सख्त गोपनीयता मानदंडों के साथ व्यापक डिजिटल व्यक्तिगत डेटा संरक्षण अधिनियम पारित किया',
+    'updates.1.date': '10 दिसंबर, 2024',
+    'updates.2.title': 'अनुच्छेद 21 पर सुप्रीम कोर्ट का फैसला',
+    'updates.2.desc': 'ऐतिहासिक फैसले ने जीवन के अधिकार को स्वच्छ पर्यावरण के अधिकार तक विस्तारित किया',
+    'updates.2.date': '8 दिसंबर, 2024',
+    'updates.3.title': 'उपभोक्ता संरक्षण नियम अपडेट',
+    'updates.3.desc': 'नए ई-कॉमर्स दिशानिर्देश रद्द आदेशों के लिए 48 घंटे के भीतर रिफंड अनिवार्य करते हैं',
+    'updates.3.date': '5 दिसंबर, 2024',
+    'updates.4.title': 'महिला सुरक्षा ऐप अनिवार्य',
+    'updates.4.desc': 'सरकार ने सभी सार्वजनिक परिवहन वाहनों में सुरक्षा ऐप्स की स्थापना अनिवार्य की',
+    'updates.4.date': '1 दिसंबर, 2024',
   },
   kn: {
     // Header
@@ -206,6 +240,23 @@ const translations: Record<Language, Record<string, string>> = {
     'common.learnMore': 'ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ',
     'common.callNow': 'ಈಗ ಕರೆ ಮಾಡಿ',
     'common.search': 'ಹುಡುಕಿ',
+    
+    // Latest Updates
+    'updates.title': 'ಇತ್ತೀಚಿನ ನವೀಕರಣಗಳು',
+    'updates.subtitle': 'ಕಾನೂನುಗಳಲ್ಲಿ ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು ಮತ್ತು ಕಾನೂನು ಸುದ್ದಿ',
+    'updates.readMore': 'ಇನ್ನಷ್ಟು ಓದಿ',
+    'updates.1.title': 'ಹೊಸ ಡೇಟಾ ಸಂರಕ್ಷಣಾ ಮಸೂದೆ 2024',
+    'updates.1.desc': 'ಸಂಸತ್ತು ಕಟ್ಟುನಿಟ್ಟಾದ ಗೌಪ್ಯತೆ ಮಾನದಂಡಗಳೊಂದಿಗೆ ಸಮಗ್ರ ಡಿಜಿಟಲ್ ವೈಯಕ್ತಿಕ ಡೇಟಾ ಸಂರಕ್ಷಣಾ ಕಾಯಿದೆಯನ್ನು ಅಂಗೀಕರಿಸಿದೆ',
+    'updates.1.date': 'ಡಿಸೆಂಬರ್ 10, 2024',
+    'updates.2.title': 'ಅನುಚ್ಛೇದ 21 ಕುರಿತು ಸುಪ್ರೀಂ ಕೋರ್ಟ್ ತೀರ್ಪು',
+    'updates.2.desc': 'ಐತಿಹಾಸಿಕ ತೀರ್ಪು ಜೀವನದ ಹಕ್ಕನ್ನು ಸ್ವಚ್ಛ ಪರಿಸರದ ಹಕ್ಕಿಗೆ ವಿಸ್ತರಿಸಿದೆ',
+    'updates.2.date': 'ಡಿಸೆಂಬರ್ 8, 2024',
+    'updates.3.title': 'ಗ್ರಾಹಕ ಸಂರಕ್ಷಣಾ ನಿಯಮಗಳು ನವೀಕರಿಸಲಾಗಿದೆ',
+    'updates.3.desc': 'ಹೊಸ ಇ-ಕಾಮರ್ಸ್ ಮಾರ್ಗಸೂಚಿಗಳು ರದ್ದಾದ ಆರ್ಡರ್‌ಗಳಿಗೆ 48 ಗಂಟೆಗಳ ಒಳಗೆ ಹಣ ಮರುಪಾವತಿ ಕಡ್ಡಾಯಗೊಳಿಸುತ್ತವೆ',
+    'updates.3.date': 'ಡಿಸೆಂಬರ್ 5, 2024',
+    'updates.4.title': 'ಮಹಿಳಾ ಸುರಕ್ಷತಾ ಅಪ್ಲಿಕೇಶನ್ ಕಡ್ಡಾಯ',
+    'updates.4.desc': 'ಸರ್ಕಾರವು ಎಲ್ಲಾ ಸಾರ್ವಜನಿಕ ಸಾರಿಗೆ ವಾಹನಗಳಲ್ಲಿ ಸುರಕ್ಷತಾ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಸ್ಥಾಪನೆಯನ್ನು ಕಡ್ಡಾಯಗೊಳಿಸಿದೆ',
+    'updates.4.date': 'ಡಿಸೆಂಬರ್ 1, 2024',
   }
 };
 
