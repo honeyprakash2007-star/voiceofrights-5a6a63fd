@@ -3,7 +3,7 @@ import { Search, BookOpen, Bot, Sparkles, ArrowRight, Globe } from "lucide-react
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
-import legalAiBot from "@/assets/legal-ai-bot.png";
+import legalAiBot from "@/assets/legal-ai-bot.jpg";
 
 type Language = "en" | "kn" | "hi";
 
